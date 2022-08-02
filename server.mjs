@@ -21,7 +21,9 @@ http
 
     console.log(response);
 
-    console.log(new Date());
+    console.log(new Date(), "abc");
+    
+    console.log("hello world");
 
     res.end(response);
 })

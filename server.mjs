@@ -16,9 +16,10 @@ http
     const parsed = url.parse(requestPath)
     const platform = os.platform()
     const arch = os.arch();
-    
 
     const response = util.format("your is looking for %s query is %s. Application is running on %s and %s, the current time is %s", requestPath, parsed.query, platform, arch, getDateTime())
+
+    console.log(response);
 
     res.end(response);
 })

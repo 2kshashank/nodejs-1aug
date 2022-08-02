@@ -21,6 +21,8 @@ http
 
     console.log(response);
 
+    console.log(new Date());
+
     res.end(response);
 })
 .listen(PORT, ()=>{

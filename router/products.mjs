@@ -13,7 +13,7 @@ Router.get("/", (request, response) => {
 // /products/laptop/
 // /products/laptop
 Router.get("/laptop", (request, response) => {
-    response.send("This is the products page.");
+    response.send("This is the laptop page.");
   });
   
 

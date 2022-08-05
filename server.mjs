@@ -1,5 +1,4 @@
 import express from "express";
-import fs from "fs";
 import HomepageRouter from "./router/homepage.mjs"
 import ProductsRouter from "./router/products.mjs"
 

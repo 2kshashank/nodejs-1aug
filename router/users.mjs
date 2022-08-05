@@ -1,29 +1,16 @@
-import express from "express";
-import https from "https";
+import express, { json } from "express";
+import axios from "axios";
 
 const Router = express.Router();
 
-Router.get("/", (req, res) => {
-  https.get(
-    {
-      hostname: "jsonplaceholder.typicode.com",
-      protocol: "https:",
-      path: "/users",
-    },
-    (response) => {
-      let data = "";
-
-      response.on("data", (chunk) => {
-        data = data + chunk;
-      });
-
-      response.on("close", () => {
-        res.json(data);
-      });
+Router.get("/", async (req, res) => {
+    try {
+        const response = await axios.get("https://jsonplaceholder.typicode.com/users");
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).send("Internal server error.");
     }
-  );
-
-  
+    
 });
 
 export default Router;

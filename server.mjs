@@ -6,6 +6,7 @@ import UsersRouter from "./router/users.mjs"
 const app = express();
 
 app.use(express.json())
+app.set("view engine", "ejs")
 
 const PORT = process.env.PORT || 3000
 

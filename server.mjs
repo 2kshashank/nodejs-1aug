@@ -3,6 +3,8 @@ import HomepageRouter from "./router/homepage.mjs"
 import ProductsRouter from "./router/products.mjs"
 import UsersRouter from "./router/users.mjs"
 
+import "./utils/mongoose-db.mjs"
+
 const app = express();
 
 app.use(express.json())

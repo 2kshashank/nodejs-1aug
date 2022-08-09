@@ -54,6 +54,24 @@ Router.post("/", async (request, response) => {
 });
 
 
+Router.put("/:id", async (request, response) => {
+
+  const id = request.params.id;
+  const body = request.body;
+
+  const client = createClient();
+  await client.connect();
+  const db = client.db("edureka");
+  const collection = db.collection("products");
+  
+  const doc = await collection.updateOne({ _id : ObjectID(id) }, { $set : body })
+  client.close()
+
+  response.json(doc);
+
+});
+
+
   
 
 export default Router;

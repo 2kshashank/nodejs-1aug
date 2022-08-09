@@ -63,13 +63,30 @@ Router.put("/:id", async (request, response) => {
   await client.connect();
   const db = client.db("edureka");
   const collection = db.collection("products");
-  
+
   const doc = await collection.updateOne({ _id : ObjectID(id) }, { $set : body })
   client.close()
 
   response.json(doc);
 
 });
+
+Router.delete("/:id", async (request, response) => {
+
+  const id = request.params.id;
+
+  const client = createClient();
+  await client.connect();
+  const db = client.db("edureka");
+  const collection = db.collection("products");
+  
+  const doc = await collection.deleteOne({ _id : ObjectID(id) })
+  client.close()
+
+  response.json(doc);
+
+});
+
 
 
   

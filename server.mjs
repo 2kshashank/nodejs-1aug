@@ -3,7 +3,10 @@ import HomepageRouter from "./router/homepage.mjs"
 import ProductsRouter from "./router/products.mjs"
 import UsersRouter from "./router/users.mjs"
 
+import * as graphql from "express-graphql"
+
 import "./utils/mongoose-db.mjs"
+import { Schema } from "./graphql/schema/query.mjs";
 
 const app = express();
 
@@ -23,6 +26,11 @@ const PORT = process.env.PORT || 3000
 app.use("/", HomepageRouter);
 app.use("/products", ProductsRouter);
 app.use("/users", UsersRouter);
+
+app.use("/graphql", graphql.graphqlHTTP({
+    graphiql : true,
+    schema : Schema
+}))
 
 
 app.listen(PORT, () => {

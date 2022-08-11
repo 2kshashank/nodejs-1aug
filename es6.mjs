@@ -1,22 +1,22 @@
 // Simplify function defination
 // Handling 'this' keyword.
 
-class Car {
+// class Car {
 
-    name = "Tesla"
+//     name = "Tesla"
 
-    drive(){
-        setTimeout(()=>{
-            console.log(this.name);
-        })
-    }
+//     drive(){
+//         setTimeout(()=>{
+//             console.log(this.name);
+//         })
+//     }
 
-}
+// }
 
 
-const tesla = new Car();
+// const tesla = new Car();
 
-tesla.drive()
+// tesla.drive()
 
 
 

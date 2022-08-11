@@ -1,12 +1,32 @@
-const name = "Praveen";
-const message = `Hello ${name}, The time is ${new Date().toISOString()}`
-console.log(message)
+// Spread syntax
+// Object Destructing 
 
+const person = {
+    name : "praveen",
+    location : "new delhi",
+}
 
+const job = {
+    title : "trainer",
+    exp : 5
+}
 
+// const personAndJob = {
+//     name : person.name,
+//     location: person.location,
+//     title: job.title,
+//     exp: job.exp
+// }
 
+// const personAndJob = Object.assign({}, person, job)
 
+const personAndJob = {...person, ...job}
 
+console.log(personAndJob)
+
+// const name = "Praveen";
+// const message = `Hello ${name}, The time is ${new Date().toISOString()}`
+// console.log(message)
 
 // Simplify function defination
 // Handling 'this' keyword.

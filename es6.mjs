@@ -1,3 +1,64 @@
+// Simplify function defination
+// Handling 'this' keyword.
+
+setTimeout(()=>{
+    console.log("1 sec")
+}, 1000)
+
+// function currentTimestamp(){
+//     return new Date().toISOString()
+// }
+
+const currentTimestamp = () => new Date().toISOString() 
+
+// function createRandomNumber(limit){
+//     return Math.round(Math.random() * limit)
+// }
+
+const createRandomNumber = limit => Math.round(Math.random() * limit)
+
+// function add(a, b){
+//     return a + b;
+// }
+
+const add = (a, b) => a + b;
+
+console.log(createRandomNumber(100))
+console.log(currentTimestamp())
+console.log(add(1, 5))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // var a = "abc";
 // let nameUsingLet = "qwerty"
 // const nameUsingConst = "qweery"

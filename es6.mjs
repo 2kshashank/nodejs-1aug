@@ -1,3 +1,13 @@
+const name = "Praveen";
+const message = `Hello ${name}, The time is ${new Date().toISOString()}`
+console.log(message)
+
+
+
+
+
+
+
 // Simplify function defination
 // Handling 'this' keyword.
 

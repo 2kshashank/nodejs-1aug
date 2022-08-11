@@ -1,15 +1,31 @@
-// Spread syntax
-// Object Destructing 
+// Spread syntax - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+// Destructuring assignment - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 
-const person = {
+const response = {
     name : "praveen",
-    location : "new delhi",
+    address : {
+        city : "new delhi"
+    },
+    job : {
+        title : "trainer"
+    }
 }
 
-const job = {
-    title : "trainer",
-    exp : 5
-}
+const { address } = response
+const { city : location } = address
+console.log(location)
+
+
+
+// const person = {
+//     name : "praveen",
+//     location : "new delhi",
+// }
+
+// const job = {
+//     title : "trainer",
+//     exp : 5
+// }
 
 // const personAndJob = {
 //     name : person.name,
@@ -20,9 +36,9 @@ const job = {
 
 // const personAndJob = Object.assign({}, person, job)
 
-const personAndJob = {...person, ...job}
+// const personAndJob = {...person, ...job}
 
-console.log(personAndJob)
+// console.log(personAndJob)
 
 // const name = "Praveen";
 // const message = `Hello ${name}, The time is ${new Date().toISOString()}`

@@ -1,7 +1,7 @@
 import express from "express";
-import HomepageRouter from "./router/homepage.mjs"
-import ProductsRouter from "./router/products.mjs"
-import UsersRouter from "./router/users.mjs"
+import HomepageRouter from "./router/homepage"
+import ProductsRouter from "./router/products"
+import UsersRouter from "./router/users"
 
 import * as graphql from "express-graphql"
 

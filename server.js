@@ -2,6 +2,7 @@ import express from "express";
 import HomepageRouter from "./router/homepage"
 import ProductsRouter from "./router/products"
 import UsersRouter from "./router/users"
+import UsersAPIRouter from "./router/api-user"
 
 import * as graphql from "express-graphql"
 
@@ -26,6 +27,8 @@ const PORT = process.env.PORT || 3000
 app.use("/", HomepageRouter);
 app.use("/products", ProductsRouter);
 app.use("/users", UsersRouter);
+app.use("/api/users", UsersAPIRouter);
+
 
 app.use("/graphql", graphql.graphqlHTTP({
     graphiql : true,

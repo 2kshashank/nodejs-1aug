@@ -1,3 +1,4 @@
+import "dotenv/config"
 import express from "express";
 import HomepageRouter from "./router/homepage"
 import ProductsRouter from "./router/products"

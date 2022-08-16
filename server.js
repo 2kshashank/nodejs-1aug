@@ -51,8 +51,15 @@ app.use("/graphql", graphql.graphqlHTTP({
 io.on("connection", (socket)=>{
   socket.on("chat-message", (msg)=>{
     // console.log(`User sent message - ${msg}`)
+    
     // Group Chat with all users on server.
-    io.emit("message", msg)
+    // io.emit("message", msg)
+
+    // Group chat - except the sender.
+    socket.broadcast.emit("message", msg)
+
+
+
   })
   
 })

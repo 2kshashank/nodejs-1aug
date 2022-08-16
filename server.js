@@ -20,6 +20,7 @@ const io = new Server(server)
 
 app.use(express.json())
 app.use(express.urlencoded( { extended : true } ))
+app.use(express.static("public"));
 app.set("view engine", "ejs")
 
 const PORT = process.env.PORT || 3000
@@ -36,6 +37,10 @@ app.use("/products", ProductsRouter);
 app.use("/users", UsersRouter);
 app.use("/api/users", UsersAPIRouter);
 
+app.get("/chat", (req, res)=>{
+  res.render("chat")
+})
+
 
 app.use("/graphql", graphql.graphqlHTTP({
     graphiql : true,
@@ -43,9 +48,10 @@ app.use("/graphql", graphql.graphqlHTTP({
 }))
 
 
-// app.listen(PORT, () => {
-//   console.log(`Server started at ${PORT}`);
-// });
+io.on("connection", (socket)=>{
+  console.log("user connected")
+})
+
 
 server.listen(PORT, ()=>{
   console.log("Application started at 3000")

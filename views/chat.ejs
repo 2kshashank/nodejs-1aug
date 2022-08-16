@@ -4,13 +4,44 @@
   <body>
     <%- include('partials/header.ejs') %>
     <script src="/js/socketio.js"></script>
-    <script>
-      const socket = io();
-    </script>
+
     <div class="container">
       <div class="row">
-        <div class="col"></div>
+        <div class="col">
+          <form id="chat-form">
+            <p>
+              <input id="chat-message" name="chat-message" />
+              <button>Send</button>
+            </p>
+          </form>
+          <ul id="messages">
+
+          </ul>
+        </div>
       </div>
     </div>
+    <script>
+      const socket = io();
+
+      const form = document.getElementById("chat-form");
+      const input = document.getElementById("chat-message");
+      const messages = document.getElementById("messages");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (input.value !== "") {
+          socket.emit("chat-message", input.value);
+          input.value = "";
+        }
+      });
+
+      socket.on("message", (msg)=>{
+        const chatMessage = document.createElement("li");
+        chatMessage.innerText = msg;
+        messages.appendChild(chatMessage);
+      })
+
+    </script>
   </body>
 </html>

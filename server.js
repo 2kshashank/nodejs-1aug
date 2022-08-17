@@ -55,11 +55,17 @@ io.on("connection", (socket) => {
     // io.emit("message", msg)
 
     // Group chat - except the sender.
-    socket.broadcast.emit("message", msg);
+
+    if (socket.data.username && msg) {
+      socket.broadcast.emit("message", {
+        message: msg,
+        user: socket.data.username,
+      });
+    }
   });
 
   socket.on("login", (msg) => {
-    socket.data = { username : msg }
+    socket.data = { username: msg };
     socket.broadcast.emit("newuser", msg);
   });
 });

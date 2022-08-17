@@ -66,7 +66,8 @@
 
       socket.on("message", (msg) => {
         const chatMessage = document.createElement("li");
-        chatMessage.innerText = msg;
+        const { message, user } = msg
+        chatMessage.innerText = `${user}: ${message}`;
         messages.appendChild(chatMessage);
       });
 

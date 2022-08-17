@@ -8,6 +8,11 @@
       #chat-form {
         display: none;
       }
+
+      #messages { list-style: none; width: 100%; }
+      #messages li { margin-bottom: 10px; }
+      li.friend { background-color: aqua; border-radius: 10px; padding: 10px; margin-right: 100px; }
+      li.self { background-color: coral; border-radius: 10px; padding: 10px; margin-left: 100px;}
     </style>
 
     <div class="container">
@@ -16,6 +21,7 @@
           <ul id="messages"></ul>
 
           <form id="chat-form">
+            <p id="currentUser"></p>
             <p>
               <input id="chat-message" name="chat-message" />
               <button>Send</button>
@@ -42,17 +48,27 @@
 
       const loginForm = document.getElementById("login-form");
       const username = document.getElementById("username");
+      const currentUser = document.getElementById("currentUser");
 
       const usersList = document.getElementById("users");
+
+      function addMessageToList(msg, isSelf) {
+        const chatMessage = document.createElement("li");
+        const { message, user } = msg;
+        chatMessage.innerText = `${user}: ${message}`;
+        chatMessage.classList.add(isSelf ? "self" : "friend")
+        messages.appendChild(chatMessage);
+      }
 
       loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
         if (username.value !== "") {
           socket.emit("login", username.value);
-          username.value = "";
           loginForm.style.display = "none";
           chatForm.style.display = "block";
+          currentUser.innerText = `Currently logged in as: ${username.value}`;
+          username.value = "";
         }
       });
 
@@ -60,15 +76,13 @@
         e.preventDefault();
         if (input.value !== "") {
           socket.emit("chat-message", input.value);
+          addMessageToList({ message : input.value, user : "me" }, true)
           input.value = "";
         }
       });
 
       socket.on("message", (msg) => {
-        const chatMessage = document.createElement("li");
-        const { message, user } = msg
-        chatMessage.innerText = `${user}: ${message}`;
-        messages.appendChild(chatMessage);
+        addMessageToList(msg, false);
       });
 
       socket.on("newuser", (name) => {

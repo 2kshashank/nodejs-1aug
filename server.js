@@ -68,6 +68,10 @@ io.on("connection", (socket) => {
     socket.data = { username: msg };
     socket.broadcast.emit("newuser", msg);
   });
+
+  socket.on("typing", (typing) => {
+    socket.broadcast.emit("typingnow", { typing, username: socket.data.username });
+  });
 });
 
 server.listen(PORT, () => {

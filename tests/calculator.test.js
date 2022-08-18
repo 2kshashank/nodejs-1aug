@@ -1,5 +1,8 @@
-const calculator = require("../calculator.js")
-const { expect } = require("chai")
+import calculator from "../calculator"
+import {expect} from "chai"
+
+// const calculator = require("../calculator.js")
+// const { expect } = require("chai")
 
 describe("Testing calculator", ()=>{
 

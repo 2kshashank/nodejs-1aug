@@ -1,4 +1,4 @@
-function calculator(numb1, oper, numb2) {
+export default function calculator(numb1, oper, numb2) {
   console.log("Welcome to Calculator.");
   const numberOne = Number(numb1);
   const operation = oper;
@@ -8,20 +8,18 @@ function calculator(numb1, oper, numb2) {
 
   switch (operation) {
     case "+":
-      return numberOne + numberTwo
+      return numberOne + numberTwo;
 
     case "-":
-      return numberOne - numberTwo
+      return numberOne - numberTwo;
 
     case "x":
-      return numberOne * numberTwo
+      return numberOne * numberTwo;
 
     case "/":
-      return numberOne / numberTwo
+      return numberOne / numberTwo;
 
     default:
-      return null
+      return null;
   }
 }
-
-module.exports = calculator;

@@ -20,6 +20,7 @@
     "yargs": "^17.5.1"
   },
   "devDependencies": {
+    "@babel/register": "^7.18.9",
     "chai": "^4.3.6",
     "mocha": "^10.0.0",
     "nodemon": "^2.0.19"
@@ -27,7 +28,7 @@
   "scripts": {
     "build": "babel server.mjs -d dist",
     "dev-server": "nodemon --exec babel-node server.js",
-    "test" : "mocha ./tests/**/*.test.js"
+    "test": "mocha --require @babel/register ./tests/**/*.test.js"
   },
   "name": "edureka-node-demo",
   "version": "0.0.1",

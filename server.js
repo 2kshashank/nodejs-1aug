@@ -77,3 +77,5 @@ io.on("connection", (socket) => {
 server.listen(PORT, () => {
   console.log("Application started at 3000");
 });
+
+export { server };

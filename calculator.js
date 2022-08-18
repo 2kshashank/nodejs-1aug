@@ -1,4 +1,4 @@
-export default function calculator(numb1, oper, numb2) {
+function calculator(numb1, oper, numb2) {
   console.log("Welcome to Calculator.");
   const numberOne = Number(numb1);
   const operation = oper;
@@ -23,3 +23,5 @@ export default function calculator(numb1, oper, numb2) {
       return null
   }
 }
+
+module.exports = calculator;

@@ -4,12 +4,15 @@ import bcrypt from "bcrypt";
 import { UserModel } from "../models/users.mjs";
 import jwt from "jsonwebtoken";
 import AuthMiddleware from "../middlewares/auth.js";
+import assert from "assert"
 
 const Router = express.Router();
 Router.get("/", async (req, res) => {
   try {
     const users = await UserModel.find();
     // res.json(users);
+    // console.log(users);
+    // assert.equal(users.length > 5, true, "Invalid user count.")
     res.json(users);
   } catch (error) {
     console.log(error);
